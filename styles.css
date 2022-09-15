@@ -1,0 +1,171 @@
+* {
+    margin:0; /* tirar toda a margem do site*/
+    padding:0; /* tirar todos os paddings(preenchimento interno das caixas) do site*/
+    box-sizing: border-box;/* ele vai seguir a margem de 580px do main */
+}
+ul{
+    list-style: none;
+    /* chamar a ul utilizada no html proveniente das listas para remoção do ponto utilizado nas listas*/
+}
+
+body {
+    background-image: url(./assets/bg.jpg);
+    /* utilização do background-image e do url para puxar de algum lugar a imagem a ser utilizada de fundo*/
+    background-position: top center;
+    /* utilização do background position para mexer na localização da imagem de background a colocando no centro e em cima*/
+    background-size: 100% auto;
+    /* utilização do size para colocar o tamanho automatico dependendo da sua tela ele ira ocupar o 100%dela */
+    background-repeat: no-repeat;
+    /* não repetir a imagem  */
+    background-color: #121214;
+}
+
+body * {
+    font-family: 'Inter', sans-serif;
+    line-height: 160%;
+}
+
+header {
+    padding-top: 32px;
+    height: calc(120px + 32px);
+    /*todo conteudo identificado como conteudo de texto eu posso alinhar em uma direção especifica*/
+}
+
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    border-radius: 50%;
+    display: flex;
+    padding: 4px;
+    transition: transform .3s;
+    /* foi chamado a transition aqui usar como parametro o transform passando o tempo dela ser executada*/
+}
+
+header div:hover { /* quando o usuário passar o mouse em cima da div ela ira ter a propriedade aplicada escrita aqui*/
+    transform: scale(1.1)
+}
+
+header img {
+    width: 100%;
+    border-radius: 50%;
+    
+}
+
+/* utilização do * serve para universalizar todas as tags no meio para um determinado estilo */
+
+main{
+    max-width: 580px;
+    width: 90;
+    margin: 32px auto;
+    /*Quando é passado dois parametros de valores para o margin ele identifica o
+    o primeiro valor para cima e baixo como as margens do site e as laterias ficam auto*/
+
+    display: grid;
+    gap: 24px;
+
+}
+
+section {
+    color: white;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    padding-top: 4px;
+    border-radius: 10px;
+}
+
+section div{
+    background-color :#2A2634;
+    padding: 32px;
+    padding-top: 32px;
+    border-radius: 8px;
+
+    border-top: 4px
+
+}
+
+section h2 {
+    letter-spacing: -0.47px;
+}
+
+section p {
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+/* utilização de varios section os chamando diretamente do html para especificar seus tamanhos os h2 e p se repetem em todos os section
+logo só é preciso definir uma vez para a tag p e h2 que já serve para todos os section do html*/
+
+section ul {
+    display: flex;
+    flex-wrap: wrap; /* caso chegue no limite de tamanho da caixa ele começa a jogar os novos jogos para baixo da caixa invés de ficar colocando todoos para direita*/
+    gap: 16px; /* utilizando a proprieda flex ele pega a caixa ul que contém as 3 caixas li movimenta-as e deixa elas retas */
+    /* gap só funciona se tiver o display flex*/
+    /*display serve para a visualização das caixas no HTML*/
+    margin-top: 24px; /* Utilização do margin top dentro da ul para modificar a margem do topo das 3 li*/
+}
+
+section ul li {
+    transition: transform .3s;
+}
+
+section ul li:hover {
+    transform: scale(1.1);
+}
+
+.games-list img{
+    width: 90px;
+    border-radius: 8px;
+}
+
+.channel-list img{
+    border-radius: 50%;
+    width: 70px;
+    border: 1px solid #443E54;
+}
+
+/* animation */
+
+header div {
+    animation: fromTop .7s .2s backwards;
+    /* Sempre que utilizar uma animação precisa passar o parametro de tempo dela
+    e o backwards para puxar as propriedades da mesma*/
+}
+
+main section{
+    animation: fromBottom .7s backwards;
+}
+
+main section:nth-child(1){ /*main pega o section e seu primeiro filho*/
+    animation-delay: 0;
+}
+
+main section:nth-child(2){ /*main pega o section e seu primeiro filho*/
+    animation-delay: .4s;
+}
+
+main section:nth-child(3){ /*main pega o section e seu primeiro filho*/
+    animation-delay: .8s;
+}
+
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+} /* @keyframes serve para chamar a iniciação e o posterior é nome dela*/
+
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
